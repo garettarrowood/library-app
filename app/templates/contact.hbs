@@ -1,1 +1,26 @@
 <h1>Contact Page</h1>
+
+<div class="jumbotron text-center">
+  <h1>Reach Out!</h1>
+
+  <br><br>
+
+  <p>We'd love to hear from you.</p>
+  <div class="form-horizontal form-group form-group-lg row">
+    <div class="col-xs-12 margin-below">
+      {{input type="email" value=emailAddress class="form-control" placeholder="your email address"}}
+    </div>
+    <div class="col-xs-12 margin-below">
+      {{textarea class="form-control" type="textarea" value=message class="form-control" placeholder="your message" rows="7"}}
+    </div>
+    <div class="col-xs-6 col-xs-offset-6">
+      <button class="btn btn-primary btn-lg btn-block" disabled={{isDisabled}} {{action 'sendMessage'}}>Send Message</button>
+    </div>
+  </div>
+
+  {{#if responseMessage}}
+    <div class="alert alert-success">{{responseMessage}}</div>
+  {{/if}}
+
+  <br><br>
+</div>
