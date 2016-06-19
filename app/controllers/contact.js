@@ -13,10 +13,15 @@ export default Ember.Controller.extend({
   actions: {
 
     sendMessage() {
-      this.set('responseMessage', "Thank you for sending us a message!");
-      this.set('message', '');
-      this.set('emailAddress', '');
-    }
+      const email = this.get('emailAddress');
+      const message = this.get('message');
+      const newContact = this.store.createRecord('contact', { email: email, message: message });
 
+      newContact.save().then((response) => {
+        this.set('responseMessage', `Thank you for sending us a message! Reciept # is: ${response.get('id')}`);
+        this.set('message', '');
+        this.set('emailAddress', '');
+      });
+    }
   }
 });
