@@ -1,26 +1,37 @@
 <h1>Contact Page</h1>
 
 <div class="jumbotron text-center">
+
+  {{#if responseMessage}}
+
+    <br/>
+    <div class="alert alert-success">
+        <h4>Thank you! Your message is sent.</h4>
+        <p>To: {{model.email}}</p>
+        <p>Message: {{model.message}}</p>
+        <p>Reference ID: {{model.id}}</p>
+    </div>
+
+  {{else}}
+
   <h1>Reach Out!</h1>
 
-  <br><br>
+  <br>
 
   <p>We'd love to hear from you.</p>
   <div class="form-horizontal form-group form-group-lg row">
     <div class="col-xs-12 margin-below">
-      {{input type="email" value=emailAddress class="form-control" placeholder="your email address"}}
+      {{input type="email" value=model.email class="form-control" placeholder="your email address"}}
     </div>
     <div class="col-xs-12 margin-below">
-      {{textarea class="form-control" type="textarea" value=message class="form-control" placeholder="your message" rows="7"}}
+      {{textarea class="form-control" type="textarea" value=model.message class="form-control" placeholder="your message" rows="7"}}
     </div>
     <div class="col-xs-6 col-xs-offset-6">
-      <button class="btn btn-primary btn-lg btn-block" disabled={{isDisabled}} {{action 'sendMessage'}}>Send Message</button>
+      <button class="btn btn-primary btn-lg btn-block" disabled={{model.isDisabled}} {{action 'sendMessage' model}}>Send Message</button>
     </div>
   </div>
 
-  {{#if responseMessage}}
-    <div class="alert alert-success">{{responseMessage}}</div>
   {{/if}}
 
-  <br><br>
+  <br>
 </div>
