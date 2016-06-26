@@ -5,7 +5,7 @@ import Faker from 'faker';
 
 export default Model.extend({
   title: attr('string'),
-  releaseYear: attr('date'),
+  releaseDate: attr('date'),
 
   library: belongsTo('library', {inverse: 'books', async: true}),
   author: belongsTo('author', {inverse: 'books', async: true}),
@@ -13,18 +13,14 @@ export default Model.extend({
   randomize(author, library) {
     this.set('title', this._bookTitle());
     this.set('author', author);
-    this.set('releaseYear', this._randomYear());
+    this.set('releaseDate', Faker.date.past(100, new Date()));
     this.set('library', library);
 
     return this;
   },
 
   _bookTitle() {
-    return `${Faker.commerce.productName()} Ed. ${this._getRandomArbitrary(1, 100)}`;
-  },
-
-  _randomYear() {
-    return new Date(this._getRandomArbitrary(1930, 2016));
+    return `${Faker.commerce.productName()} Ed. ${parseInt(this._getRandomArbitrary(1, 100))}`;
   },
 
   _getRandomArbitrary(min, max) {
