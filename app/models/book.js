@@ -10,6 +10,8 @@ export default Model.extend({
   library: belongsTo('library', {inverse: 'books', async: true}),
   author: belongsTo('author', {inverse: 'books', async: true}),
 
+  isNotValidTitle: Ember.computed.empty('title'),
+
   randomize(author, library) {
     this.set('title', this._bookTitle());
     this.set('author', author);
