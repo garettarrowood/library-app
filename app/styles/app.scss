@@ -15,3 +15,11 @@ html {
 .margin-below {
   margin-bottom: 10px;
 }
+
+.label-fade {
+  opacity: 0;
+  @include transition(all 0.5s);
+  &.label-show {
+    opacity: 1;
+  }
+}
