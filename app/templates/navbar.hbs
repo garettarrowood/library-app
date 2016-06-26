@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+  <div class="container-fluid metal-green">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
         <span class="sr-only">Toggle navigation</span>
@@ -7,13 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      {{#link-to 'index' class="navbar-brand"}}Library App{{/link-to}}
+      {{#link-to 'index' class="navbar-brand"}}Ember Library{{/link-to}}
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav">
         {{#nav-link-to 'index'}}Home{{/nav-link-to}}
-        {{#nav-link-to 'about'}}About{{/nav-link-to}}
         {{#nav-link-to 'libraries'}}Libraries{{/nav-link-to}}
         {{#nav-link-to 'contact'}}Contact{{/nav-link-to}}
       </ul>
