@@ -20,7 +20,7 @@ export default Model.extend({
   },
 
   _bookTitle() {
-    return `${Faker.commerce.productName()} Ed. ${parseInt(this._getRandomArbitrary(1, 100))}`;
+    return `${Faker.commerce.productName()} Ed. ${parseInt(this._getRandomArbitrary(1, 50))}`;
   },
 
   _getRandomArbitrary(min, max) {

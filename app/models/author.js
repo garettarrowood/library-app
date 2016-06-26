@@ -2,6 +2,7 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
 import Faker from 'faker';
+import Ember from 'ember';
 
 export default Model.extend({
   name: attr('string'),
@@ -11,6 +12,8 @@ export default Model.extend({
   randomize() {
     this.set('name', Faker.name.findName());
     return this;
-  }
+  },
+
+  isNotValid: Ember.computed.empty('name')
 
 });
