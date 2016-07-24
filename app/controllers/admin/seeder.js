@@ -23,7 +23,9 @@ export default Ember.Controller.extend({
     },
 
     deleteLibraries() {
-      this._destroyAll(this.get('libraries'));
+      this.get('libraries').forEach((library) => {
+        library.destroyRecord();
+      });
 
       this.set('libDelDone', true);
     },
@@ -47,8 +49,11 @@ export default Ember.Controller.extend({
     },
 
     deleteBooksAndAuthors() {
-      this._destroyAll(this.get('books'));
-      this._destroyAll(this.get('authors'));
+      this.get('authors').forEach((author) => {
+        Ember.RSVP.all(author.get('books').invoke("destroyRecord")).then(function(){
+          author.destroyRecord();
+        });
+      });
 
       this.set('authDelDone', true);
     }
@@ -77,11 +82,5 @@ export default Ember.Controller.extend({
 
     const randomLibrary = libraries.findBy('id', libraryIds[randomNumber]);
     return randomLibrary;
-  },
-
-  _destroyAll(records) {
-    records.forEach((item) => {
-      item.destroyRecord();
-    });
   }
 });
