@@ -7,7 +7,7 @@ import Ember from 'ember';
 export default Model.extend({
   name: attr('string'),
 
-  books: hasMany('book', {inverse: 'author', async: true}),
+  books: hasMany('book', { inverse: 'author', async: true }),
 
   randomize() {
     this.set('name', Faker.name.findName());
