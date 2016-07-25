@@ -1,7 +1,8 @@
 <h1 class="text-center">{{book.title}}</h1>
 
-<h5 class="text-center">Written by {{book.author.name}}</h5>
-<h5 class="text-center">in {{moment-format book.releaseDate}}</h5>
+<h4 class="text-center">Written by {{book.author.name}}</h4>
+<h4 class="text-center">Published in {{moment-format book.releaseDate}}</h4>
+<h5 class="text-center">This book can be found in the {{book.library.name}}</h5>
 
 <p class="col-md-10 col-md-offset-1">{{book.description}}</p>
 
