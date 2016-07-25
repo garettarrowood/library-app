@@ -7,6 +7,7 @@ import Ember from 'ember';
 export default Model.extend({
   title: attr('string'),
   releaseDate: attr('date'),
+  description: attr('string'),
 
   library: belongsTo('library', { inverse: 'books', async: true }),
   author: belongsTo('author', { inverse: 'books', async: true }),
@@ -17,6 +18,7 @@ export default Model.extend({
     this.set('title', this._bookTitle());
     this.set('author', author);
     this.set('releaseDate', Faker.date.past(100, new Date()));
+    this.set('description', Faker.lorem.paragraphs(4));
     this.set('library', library);
 
     return this;
