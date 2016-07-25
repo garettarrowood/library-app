@@ -1,0 +1,8 @@
+<h1 class="text-center">{{book.title}}</h1>
+
+<h5 class="text-center">Written by {{book.author.name}}</h5>
+<h5 class="text-center">in {{moment-format book.releaseDate}}</h5>
+
+<p class="col-md-10 col-md-offset-1">{{book.description}}</p>
+
+<div class="text-center">{{#link-to 'books' class='btn btn-warning'}}Back to Books{{/link-to}}</div>

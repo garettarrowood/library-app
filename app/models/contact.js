@@ -11,5 +11,4 @@ export default Model.extend({
 
   isValid: Ember.computed.and('isValidEmail', 'isMessageEnoughLong'),
   isDisabled: Ember.computed.not('isValid')
-
 });

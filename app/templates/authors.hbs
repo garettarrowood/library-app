@@ -12,32 +12,30 @@
   </thead>
   <tbody>
     {{#each model as |author|}}
-      {{#if author}}
-        <tr>
-          <td>
-            {{#if author.isEditing}}
-              <form {{action 'saveAuthor' author on='submit'}} class="form-inline">
-                <div class="input-group">
-                  {{input value=author.name class="form-control"}}
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-success" disabled={{author.isNotValid}}>Save</button>
-                    <button class="btn btn-warning" {{action 'cancelAuthorEdit' author}}>Cancel</button>
-                  </div>
+      <tr>
+        <td>
+          {{#if author.isEditing}}
+            <form {{action 'saveAuthor' author on='submit'}} class="form-inline">
+              <div class="input-group">
+                {{input value=author.name class="form-control"}}
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-success" disabled={{author.isNotValid}}>Save</button>
+                  <button class="btn btn-warning" {{action 'cancelAuthorEdit' author}}>Cancel</button>
                 </div>
-              </form>
-            {{else}}
-              <span {{action 'editAuthor' author}}>{{author.name}}</span>
-            {{/if}}
-          </td>
-          <td>
-            <ul>
-              {{#each author.books as |book|}}
-                <li>{{book.title}} - {{moment-format book.releaseDate}}</li>
-              {{/each}}
-            </ul>
-          </td>
-        </tr>
-      {{/if}}
+              </div>
+            </form>
+          {{else}}
+            <span {{action 'editAuthor' author}}>{{author.name}}</span>
+          {{/if}}
+        </td>
+        <td>
+          <ul>
+            {{#each author.books as |book|}}
+              <li>{{book.title}} - {{moment-format book.releaseDate}}</li>
+            {{/each}}
+          </ul>
+        </td>
+      </tr>
     {{/each}}
   </tbody>
 </table>
